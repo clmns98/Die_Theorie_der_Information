@@ -9,11 +9,11 @@ $s$ ist eine unbekannte Funktion die jedem Punkt im Raum eine optische Dichte zu
 
 Gesucht ist die Funktion $s$, diese lässt sich jedoch nicht analytisch bestimmen. Kennt man aber $d$ von genug Linien in $s$, kann man mithilfe des Satzes von Bayes mit hoher Auflösung und Sicherheit $s$ bestimmen.
 
-\subsection{Staubtomografie}
+\subsection{Staubtomographie}
 
 In der Astronomie wird die Tomographie z.B. verwendet, um die Form von kosmischen Wolken zu ermitteln. Dafür werden Sterne, deren absolute Helligkeit und Distanz bekannt ist beobachtet. Man vergleicht ihre scheinbare Helligkeit mit der zu erwartende Helligkeit und ermittelt so $d$ für alle Strecken zwischen der Erde und den beobachteten Sternen. $d$ entspricht in dem Fall die Menge an Staub zwischen dem Stern und der Erde. Aus vielen (Distanz, Helligkeit)-Paaren kann man $s$ lernen und Aussagen über die dichte-Verteilung und Form der Wolke treffen.
 
-\subsection{Computertomografie}
+\subsection{Computertomographie}
 
 Häufig verwendet wird die Tomographie auch in der Medizin, bekannt als Computertomographie(CT).
 
@@ -128,7 +128,7 @@ Die erhaltenen Start und Endpunkte, in Kombination mit den im Datenset geliefert
 \subsection{Rekonstruktion des Signals}
 \sectionauthor{Chuyang Wang}
 
-Das Ziel der Computertomografie ist, das Signal aus den gemessenen Daten zu berechnen. Mit Bayes' Formel aus \cref{k4.2.bayes} kann man den gesuchten Posterior $P(s|d)$ mit dem Likelihood $P(d|s)$ und Prior $P(s)$ wie folgt konstruieren:
+Das Ziel der Computertomographie ist, das Signal aus den gemessenen Daten zu berechnen. Mit Bayes' Formel aus \cref{k4.2.bayes} kann man den gesuchten Posterior $P(s|d)$ mit dem Likelihood $P(d|s)$ und Prior $P(s)$ wie folgt konstruieren:
 
 \begin{equation}
   P(s|d) \propto P(d|s)P(s)\ .
