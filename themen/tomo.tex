@@ -13,7 +13,7 @@ Gesucht ist die Funktion $s$, diese lässt sich jedoch nicht analytisch bestimme
 
 In der Astronomie wird die Tomographie z.B. verwendet, um die Form von kosmischen Wolken zu ermitteln. Dafür werden Sterne, deren absolute Helligkeit und Distanz bekannt ist beobachtet. Man vergleicht ihre scheinbare Helligkeit mit der zu erwartende Helligkeit und ermittelt so $d$ für alle Strecken zwischen der Erde und den beobachteten Sternen. $d$ entspricht in dem Fall die Menge an Staub zwischen dem Stern und der Erde. Aus vielen (Distanz, Helligkeit)-Paaren kann man $s$ lernen und Aussagen über die dichte-Verteilung und Form der Wolke treffen.
 
-\subsection{Computertomographie}
+\subsection{Computertomographie}\label{k4.2.comptomo}
 
 Häufig verwendet wird die Tomographie auch in der Medizin, bekannt als Computertomographie(CT).
 
@@ -101,7 +101,7 @@ Hat man alle sortierten Schnittpunkte, so kann man auch die Gewichtungen, i.e. d
 	\label{k4.2.fig.geo}
 \end{figure}
 
-Das Ziel des Projekts ist es ein Bild einer Walnuss, anhand von CT-Scandaten (siehe \cref{k4.2.comptomo.ct}), zu rekonstruieren. Die Herausforderung besteht darin die Unsicherheit in der DIchteverteilung des zu vermessenden Objekts zu quantifiziern. Aus ein Bayes'schen Perspektive (siehe \cref{k4.2.bayes}) quantifiziert der Postirior die Unsichertheit. Die präzise Beschreibung ist bei medizinischer Bildgebung wichtig.
+Das Ziel des Projekts ist es ein Bild einer Walnuss, anhand von CT-Scandaten (siehe \cref{k4.2.comptomo}), zu rekonstruieren. Die Herausforderung besteht darin die Unsicherheit in der DIchteverteilung des zu vermessenden Objekts zu quantifiziern. Aus ein Bayes'schen Perspektive (siehe \cref{k4.2.bayes}) quantifiziert der Postirior die Unsichertheit. Die präzise Beschreibung ist bei medizinischer Bildgebung wichtig.
 Die öffentlich zugänglichen Daten verfügbar unter \url{https://zenodo.org/record/1254206#.Ys6OHnZBw7c}, auf welchen unser Projekt beruht, enthalten Sinogramm und Schichtaufnahme einer Walnuss, welche in \verb|.mat|-Dateien gespeichert sind.
 In dem Versuch wurde eine Walnuss zwischen eine punktförmige Strahlungsquelle und einen flachen Schirm positioniert (\cref{k4.2.fig.ctAbbild}). Nach jeder Messung wurde die Nuss um 3° gegen den Uhrzeigersinn gedreht.
 Es wurde 120 Messungen durchgeführt, welche von dem ebenen Detektor aufgenommen wurden. Diese Daten wurden auf 328 Pixel herunterskaliert und in einer Matrix \verb|m| gespeichert.
@@ -154,7 +154,7 @@ Es gilt außerdem das Datenmodell \cref{k4.2.ct.3d.datamodel}. Da bei $P(d|s,n)$
   \end{aligned}
 \end{equation}
 
-Die Daten $d$ wurden im Experiment gemessen (vgl. \cref{k4.2.ct.walnuss}). Die Response $R$ beschreibt das Experiment (vgl. \cref{k4.2.ct.resp}) und kann vorberechnet werden. Um den Posterior zu bestimmen, muss man die Annahmen für das Signal $s$ formulieren. Man wählt dafür ein hierarchisches Modell (vgl. \cref{k4.2.hmodel}). Dabei nutzt man aus, dass $s$ positiv sein muss. Also kann man $s$ mit einer Log-Normalverteilung beschreiben. 
+Die Daten $d$ wurden im Experiment gemessen (vgl. \cref{k4.2.ct.walnuss}). Die Response $R$ beschreibt das Experiment (vgl. \cref{k4.2.ct.resp}) und kann vorberechnet werden. Um den Posterior zu bestimmen, muss man die Annahmen für das Signal $s$ formulieren. Man wählt dafür ein hierarchisches Modell (vgl. \cref{k4.2.hiera}). Dabei nutzt man aus, dass $s$ positiv sein muss. Also kann man $s$ mit einer Log-Normalverteilung beschreiben. 
 
 Um den Posterior $P(s|d) = \frac{P(d|s)P(s)}{P(d)}$ zu berechnen, benötigt man auch die Evidenz als Normierungsfaktor. Diese ist jedoch computational zu teuer. Man nutzt die Kullback-Leibler-Divergenz (vgl. \cref{k4.2.kldiv}), um den Posterior mit $P_a$ anzunähern $\mathrm{KL}(P_a,P)$. 
 
