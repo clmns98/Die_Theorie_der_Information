@@ -21,7 +21,7 @@ Bei herkömmlichen Röntgenuntersuchungen wird Röntgenstrahlung durch das abzub
 
 Beim CT drehen sich im $180^\circ$ Winkel eine Röntgenröhre und Detektor um den Patienten und nehmen dabei in kleinen Abständen Messpunkte auf. Dies wird für mehrere Schichten entlang des zu untersuchenden Körperteils ausgeführt. Der Röntgenstrahl und Detektor ist so breit, dass bei jedem Messpunkt die ganze Breite des Körperteils in einem Streifen ergriffen wird.
 
-\begin{figure}
+\begin{figure}[htb]
  \centering
  \includegraphics[width=0.4\textwidth]{k4.2/backprojektion.png}
  \caption{Abbildung eines Objektes als Sinogram}
@@ -92,7 +92,7 @@ Hat man alle sortierten Schnittpunkte, so kann man auch die Gewichtungen, i.e. d
 
 \subsection{Walnuss CT-Messdaten}\label{k4.2.ct.walnuss}
 \sectionauthor{Leo Bergmann, Cedric Balzer}
-\begin{figure}
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=0.9\textwidth]{k4.2/geometry.png}
 	\caption{Aufbau des Versuchs mit dessen Geometrie aus \textcite{k4.2.art.walnutXRay}.\\
@@ -108,7 +108,7 @@ Es wurde 120 Messungen durchgeführt, welche von dem ebenen Detektor aufgenommen
  Damit das Sinogramm in ein Bild der Dichteverteilung zurückprojeziert werden kann sind alle Start- und Endpunkte der Sichtline notwendig. Diese errechnen sich aus der Position der Quelle und der Position der einzelnen Pixel des Screens.\\
 
 
-\begin{figure}
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=0.9\textwidth]{k4.2/versuchsaufbau-skizze.png}
 	\caption{Versuchsaufbau skizziert. \\
@@ -164,14 +164,14 @@ Um den Posterior $P(s|d) = \frac{P(d|s)P(s)}{P(d)}$ zu berechnen, benötigt man 
 
 Implementiert man das obige Verfahren, so erhält man am Ende eine approximative Wahrscheinlichkeitsverteilung für das Signal $P(s|d)$ mit gegebenen Daten $d$. Die \cref{k4.2.fig.ct.mean} zeigt den Erwartungswert über mehrere Stichproben der approximativen Verteilung. An der Standardabweichung \cref{k4.2.fig.ct.std} erkennt man, dass die absolute Unsicherheit an den Stellen der Walnuss höher ist, an denen besonders viel Walnuss-Masse liegt. 
 
-\begin{figure}
+\begin{figure}[htb]
   \centering
   \includegraphics[width=0.7\textwidth]{k4.2/ct-walnuss-mean.png}
   \caption{Erwartungswert des Posteriors.}
   \label{k4.2.fig.ct.mean}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[htb]
   \centering
   \includegraphics[width=0.7\textwidth]{k4.2/ct-walnuss-std.png}
   \caption{Standardabweichung des Posteriors.}
