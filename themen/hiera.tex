@@ -4,7 +4,7 @@ Im Folgenden wird der Prior $P(s)$ für die Radioastronomie und Tomographie disk
 
 Ziel eines bildgebenden Verfahrens ist die Bestimmung von $s$. Dies kann bei der Radioastronomie die Helligkeit des Himmels oder bei der CT die Dichte des untersuchten Objektes sein. Da weder Helligkeit noch Dichte negativ sein kann, setzen wir $s \geq 0$ voraus. Damit lässt sich eine Normalverteilung für $P(s)$ bereits ausschließen, da eine solche über ganz $\mathbb{R}$ definiert wäre. Außerdem wird angenommen, dass die einzelnen Bildpunkte miteinander korreliert sind, also voneinander abhängen. Ist zum Beispiel ein Pixel dunkel, so ist es unwahrscheinlich, dass sich in direkter Nähe dazu helle Pixel befinden. In unserem Fall gilt, dass die Abhängigkeit zunimmt, je kleiner dar Abstand zwischen zwei Pixeln ist. Daraus ergibt sich eine schwierig darzustellende Kovarianzmatrix, die die Korrelation der Pixel zueinander codiert.
 
-Wir reduzieren die Komplexität von $s$, indem wir eine weitere hierarchische Stufe ergänzen. Als Zufallsvariable wird statt $s$ nun $\xi$ verwendet, welches mit $P(\xi) = \mathbb{G}(\xi, \mathds{1})$ standard-normalverteilt ist.
+Wir reduzieren die Komplexität von $s$, indem wir eine weitere hierarchische Stufe ergänzen. Als Zufallsvariable wird statt $s$ nun $\xi$ verwendet, welches mit $P(\xi) = \mathbb{G}(\xi, \mathds{1})$ standard-nor\-mal\-ver\-teilt ist.
 
 Unsere Aufgabe bestand nun darin, eine Funktion $f$ so zu definieren und zu implementieren, sodass $P(f(\xi)) d \xi = P(s) ds$. Die Schwierigkeit besteht in der Codierung der Kovarianzmatrix in $f$.
 
