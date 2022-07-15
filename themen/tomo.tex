@@ -5,7 +5,7 @@ Die Tomographie ist ein bildgebendes Verfahren, in dem ein Objekt schichtweise u
 
 $$d=\int_{\Gamma}{}s(p)dp(\gamma)$$
 
-$s$ ist eine unbekannte Funktion die jedem Punkt im Raum eine optische Dichte zuordnet. $d$ ist das Linienintegral von $s(p)$ entlang dem Pfad $\gamma$. $d$ entspricht der Menge an Licht, die zwischen dem Sender und dem Empfänger absorbiert wird und wird experimentell bestimmt.
+$s$ ist eine unbekannte Funktion, die jedem Punkt im Raum eine optische Dichte zuordnet. $d$ ist das Linienintegral von $s(p)$ entlang dem Pfad $\gamma$. $d$ entspricht der Menge an Licht, die zwischen dem Sender und dem Empfänger absorbiert wird und wird experimentell bestimmt.
 
 Gesucht ist die Funktion $s$, diese lässt sich jedoch nicht analytisch bestimmen. Kennt man aber $d$ von genug Linien in $s$, kann man mithilfe des Satzes von Bayes mit hoher Auflösung und Sicherheit $s$ bestimmen.
 
@@ -160,7 +160,6 @@ Um den Posterior $P(s|d) = \frac{P(d|s)P(s)}{P(d)}$ zu berechnen, benötigt man 
 
 
 \subsection{Endergebnis}
-\sectionauthor{Chuyang Wang}
 
 Implementiert man das obige Verfahren, so erhält man am Ende eine approximative Wahrscheinlichkeitsverteilung für das Signal $P(s|d)$ mit gegebenen Daten $d$. Die \cref{k4.2.fig.ct.mean} zeigt den Erwartungswert über mehrere Stichproben der approximativen Verteilung. An der Standardabweichung \cref{k4.2.fig.ct.std} erkennt man, dass die absolute Unsicherheit an den Stellen der Walnuss höher ist, an denen besonders viel Walnuss-Masse liegt. 
 
