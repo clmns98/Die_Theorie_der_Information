@@ -1,8 +1,10 @@
 \section{Kalibrierung der Radiointerferometriedaten}
 \sectionauthor{Benjamin Knöbel del Olmo, Ole Fleck, Aaron Gschwendt, Mara Germann}
-Das Ziel dieses Projektteils ist es, Kalibrierungsfehler aus den Interferometriedaten herauszuprojizieren. Im Gegensatz zu Beobachtungen durch einzelne Antennenarrays wurde das Schwarze Loch M87* durch das Event-Horizon-Telescope (EHT) vermessen. Das EHT besteht aus Antennenstationen in verschiedensten Ländern (Chile, Spanien, Hawaii etc.). Der Abstand zwischen den Stationen ermöglicht es, sehr kleine Winkel aufzulösen (Ref Radiointerferometrie wg Formel!).
+Das Ziel dieses Projektteils ist es, Kalibrierungsfehler aus den Interferometriedaten herauszuprojizieren. Im Gegensatz zu Beobachtungen durch einzelne Antennenarrays wurde das Schwarze Loch M87* durch das Event-Horizon-Telescope (EHT) vermessen. Das EHT besteht aus Antennenstationen in verschiedensten Ländern (Chile, Spanien, Hawaii etc.). Der Abstand zwischen den Stationen ermöglicht es, sehr kleine Winkel aufzulösen (siehe \cref{k4.2.radioformel}).
 Bei der Messung treten vor allem zwei systematische Effekte vor: Dynamiken in der Atmosphäre führen zu Phasenverschiebungen und Temperaturschwankungen im Empfänger verursachen eine zeitabhängige Skalierung der Messdaten. Diese Störungen lassen sich durch die Formel
-$$d_{abt\lambda}\rightarrow g_{at\lambda} \bar{g}_{bt\lambda}d_{abt\lambda}, \hspace{1cm} g_{at \lambda} \in \mathbb{C} \quad \forall a,t,\lambda $$
+\begin{equation}
+d_{abt\lambda}\rightarrow g_{at\lambda} \bar{g}_{bt\lambda}d_{abt\lambda}, \hspace{1cm} g_{at \lambda} \in \mathbb{C} \quad \forall a,t,\lambda
+\end{equation}
 darstellen, wobei $a$ und $b$ für ein betrachtetes Antennenpaar (also Antenne $a$ und Antenne $b$) stehen und $g_{at\lambda}$,  $g_{bt\lambda}$ zwei für die jeweilige Antennenstörung beschreibende komplexe Zahlen sind: Der Abstandsbetrag spiegelt die Signalstärkenreduktion wider, während die komplexe Phase die Phasenverschiebung repräsentiert.
 Um diese Effekte herauszukürzen, bestimmen wir die \emph{Closure Phases} und \emph{Closure Amplitudes}, eine bereinigte Form der gegebenen Daten. \emph{Closure Phases} behandeln die Phasenverschiebung der empfangenen Welle und \emph{Closure Amplitudes} die Änderung der Signalstärke. Für die Konstruktion der \emph{Closure Quantities} muss eine Funktion $f_\lambda$
 \begin{equation}
@@ -84,7 +86,7 @@ P(\xi|d)= \frac {P(d|\xi)\cdot P(\xi)}{ P(d) }
 P(d|\xi)=  {P(d_{ph}|\xi)\cdot P(d_{amp}|\xi)}    
 \end{equation}
 
-Die Likelihood (1.12) besteht aus zwei Teilen: $P(d_{ph}|\xi)$, der Wahrscheinlichkeit der \emph{Closure Phases} gegeben die Parameter $\xi$ und $P(d_{am}| \xi)$, der Wahrscheinlichkeit der \emph{Closure Amplitudes} gegeben $\xi$ : 
+Die Likelihood (\cref{4.2.likelihood}) besteht aus zwei Teilen: $P(d_{ph}|\xi)$, der Wahrscheinlichkeit der \emph{Closure Phases} gegeben die Parameter $\xi$ und $P(d_{am}| \xi)$, der Wahrscheinlichkeit der \emph{Closure Amplitudes} gegeben $\xi$ : 
 
 Der negative Logarithmus des Posteriors
 \begin{align} \label{k4.2.Posterior}
