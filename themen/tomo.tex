@@ -135,41 +135,41 @@ Die erhaltenen Start und Endpunkte, in Kombination mit den im Datenset geliefert
 \subsection{Rekonstruktion des Signals}
 \sectionauthor{Chuyang Wang}
 
-Das endgültige Ziel der CT ist, das Signal aus den gemessenen Daten zu berechnen. Mit Bayes' Formel aus \cref{k4.2.bayes} kann man das gesuchte Posterior $P(s|d)$ mit dem Likelihood $P(d|s)$ und Prior $P(s)$ wie folgt konstruieren:
+Das Ziel der Computertomografie ist, das Signal aus den gemessenen Daten zu berechnen. Mit Bayes' Formel aus \cref{k4.2.bayes} kann man den gesuchten Posterior $P(s|d)$ mit dem Likelihood $P(d|s)$ und Prior $P(s)$ wie folgt konstruieren:
 
 \begin{equation}
-  P(s|d) \propto P(d|s)P(s)
+  P(s|d) \propto P(d|s)P(s)\ .
 \end{equation}
 
-Für den Likelihood gilt:
+Für die Likelihood gilt:
 
 \begin{equation}
   \begin{aligned}
     && P(d|s) &= \int P(d,n|s) \,dn  \\
     &&  &= \int P(d|s,n) P(n|s) \,dn \\
-    && &= \int P(d|s,n) P(n) \,dn
+    && &= \int P(d|s,n) P(n) \,dn \ .
   \end{aligned}
 \end{equation}
 
-Es gilt außerdem das Datenmodell \cref{k4.2.ct.3d.datamodel}. Da bei $P(d|s,n)$ $s$ und $n$ bereits bekannt sind, ist $d$ fest bestimmt. Es ist davon auszugehen, dass das Rauschen $P(n) = \mathcal{G}(n,N)$ normalverteilt ist. Man kann zeigen, dass folgende Gleichung gilt:
+Es gilt außerdem das Datenmodell \cref{k4.2.ct.3d.datamodel}. Da bei $P(d|s,n)$ $s$ und $n$ bekannt sind, ist auch $d$ fest. Eine empirische Analyse der Daten hat gezeigt, dass das Rauschen $P(n) = \mathcal{G}(n,N)$ normalverteilt ist. Für normal verteiltes Rauschen lässt sich zeigen, dass folgende Gleichung gilt:
 
 % delta Distribution
 \begin{equation}
   \begin{aligned}
     &\Rightarrow& P(d|s) &= P_n(n-(d-Rs)) \\ 
-    && &= \mathcal{G}(d-Rs,N)
+    && &= \mathcal{G}(d-Rs,N) \ .
   \end{aligned}
 \end{equation}
 
-Die Daten $d$ sind bei dem Experiment zu messen (vgl. \cref{k4.2.ct.walnuss}). Die Response $R$ beschreibt das Experiment (vgl. \cref{k4.2.ct.resp}) und kann vorberechnet werden. Es bleibt also noch das Signal $s$ übrig, welches man dem hierarchischem Modell (vgl. \cref{k4.2.hmodel}) darstellen kann. Dafür nutzt man die Beobachtung aus, dass $s$ streng positiv sein muss. % streng?
-Also kann man $s$ mit einer logarithmisch parametrisierten Normalverteilung $\mathcal{G}(a,S)$ beschreiben, sodass $s = \exp(\mathcal{G}(a,S))$ gilt. Diese Gleichung kann man noch mit der Fourier-Transformation (vgl. \cref{k4.2.fourier}) weiter vereinfachen. Am Ende muss man nur eine Normalverteilung eingeben, deren Kovarianzmatrix nur aus einer Diagonalmatrix besteht. 
+Die Daten $d$ wurden im Experiment gemessen (vgl. \cref{k4.2.ct.walnuss}). Die Response $R$ beschreibt das Experiment (vgl. \cref{k4.2.ct.resp}) und kann vorberechnet werden. Um den Posterior zu bestimmen, muss man die Annahmen für das Signal $s$ formulieren. Man wählt dafür ein hierarchisches Modell (vgl. \cref{k4.2.hmodel}). Dabei nutzt man aus, dass $s$ positiv sein muss. Also kann man $s$ mit einer Log-Normalverteilung beschreiben. 
 
-Um den Posterior $P(s|d) = \frac{P(d|s)P(s)}{P(d)}$ zu berechnen, benötigt man auch die Evidenz als Normierungsfaktor. Diese ist jedoch zu komplex zu berechnen. Dafür kann man die Kullback-Leibler-Divergenz (vgl. \cref{k4.2.kldiv}) verwenden und eine Annäherung von dem Posterior zu bestimmen. 
+Um den Posterior $P(s|d) = \frac{P(d|s)P(s)}{P(d)}$ zu berechnen, benötigt man auch die Evidenz als Normierungsfaktor. Diese ist jedoch computational zu teuer. Man nutzt die Kullback-Leibler-Divergenz (vgl. \cref{k4.2.kldiv}), um den Posterior mit $P_a$ anzunähern $\mathrm{KL}(P_a,P)$. 
 
 
 \subsection{Endergebnis}
+\sectionauthor{Chuyang Wang}
 
-Implementiert man das obige Verfahren, so erhält man am Ende die Wahrscheinlichkeitsverteilung für das Signal $P(s|d)$ unter den gegebenen Daten $d$. Zieht man den Erwartungswert oder einen beliebigen Sample dafür, erhält man das Bild von der Walnuss in \cref{k4.2.fig.ct.mean}. An der Standardabweichung \cref{k4.2.fig.ct.std} sieht man, dass die absolute Unsicherheit an den Stellen der Walnuss höher ist im Vergleich zu der allgemein kleinen Unsicherheit.  
+Implementiert man das obige Verfahren, so erhält man am Ende eine approximative Wahrscheinlichkeitsverteilung für das Signal $P(s|d)$ mit gegebenen Daten $d$. Die \cref{k4.2.fig.ct.mean} zeigt den Erwartungswert über mehrere Stichproben der approximativen Verteilung. An der Standardabweichung \cref{k4.2.fig.ct.std} erkennt man, dass die absolute Unsicherheit an den Stellen der Walnuss höher ist, an denen besonders viel Walnuss-Masse liegt. 
 
 \begin{figure}
   \centering
@@ -185,4 +185,4 @@ Implementiert man das obige Verfahren, so erhält man am Ende die Wahrscheinlich
   \label{k4.2.fig.ct.std}
 \end{figure}
 
-An manchen Stellen wie z.B. $(10|17)$ und $(22|20)$ der \cref{k4.2.fig.ct.mean} fällt auf, dass unscharfe Kante sowie teilw. Rauschen vorkommen. Diese Fehler bei dem Modell könnten daran liegen, dass den Optimum von der Kullback-Leibler-Divergenz nur annäherungsweise erreicht ist oder der Response-Operator noch Fehler enthält, welche zu fehlerhaften Datensätzen führen. 
+An manchen Stellen wie z.B. $(10|17)$ und $(22|20)$ der \cref{k4.2.fig.ct.mean} sind unscharfe Kanten sowie teilweise Rauschen zu erkennen. Diese Fehler bei dem Modell könnten daran liegen, dass das Optimum von der Kullback-Leibler-Divergenz nur annäherungsweise erreicht ist. Darüber hinaus ist das Modell eventuell zu stark vereinfachend für die Beschreibung der Walnuss. 
