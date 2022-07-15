@@ -9,7 +9,7 @@ Der Posterior ist zwar durch Messgleichung, $P(s)$ und $P(n)$ vollständig defin
 Das Verfahren Markov-Chain-Monte-Carlo basiert darauf, dass aus $P(s|d)$ lediglich Stichproben gezogen werden und dadurch eine optimale Lösung gefunden wird. Leider ist auch diese Methode noch zu rechenintensiv, weswegen wir sie nicht nutzen.
 
 Eine weitere Möglichkeit besteht darin, den Posterior lediglich anzunähern. Dieser Ansatz benötigt ein Maß für die Quantifizierung des Approximationsfehlers, welches mit der sogenannten Kullback-Leibler-Divergenz (KL-Divergenz) wie folgt definiert ist:
-\begin{eqnarray}
+\begin{eqnarray}\label{k4.2.kldiv}
 \text{KL}(P,P_a) = \int P(s|d) \ln \frac{P(s|d)}{P_a(s|d)} ds
 \end{eqnarray}
 Das Minimieren von $\text{KL}(P, P_a)$ liefert die optimale Approximation an den Posterior.
