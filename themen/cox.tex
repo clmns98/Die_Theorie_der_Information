@@ -4,14 +4,14 @@
 Wie wird die Wahrscheinlichkeit eines Ereignisses, dem ein anderes Ereignis zugrunde liegt, berechnet? Um diese Frage zu beantworten, bedarf es der Wahrscheinlichkeitsrechnung.
 
 Bei Cox's Theorem wird die Wahrscheinlichkeitsrechnung aus der Logik hergeleitet. Im Grenzfall für absolute Sicherheit, für das Eintreten beziehungsweise Nichteintreten von Ereignissen, geht die Wahrscheinlichkeitsrechnung in wahr/falsch Aussagen und boolsche Logik über. Mit Cox's Theorem entsteht eine in sich konsistente (einheitliche) Theorie für die Wahrscheinlichkeitsrechnung, aus der sich herleiten lässt, dass man Wahrscheinlichkeiten als Grad der Plausibilität interpretieren kann. Es wird später deutlich werden, dass die Plausibilität der Wahrscheinlichkeit entspricht.
-Cox's Theorem beruht auf 3 Axiomen, die die Begründung der Bayes'schen Wahrscheinlichkeitsrechnung sind.
+Cox's Theorem beruht auf drei Axiomen, die die Begründung der Bayes'schen Wahrscheinlichkeitsrechnung sind.
 
 
 \begin{enumerate}
- \item Der \textbf{Grad der Plausibilität} eines Ereignisses $B$ unter der Bedingung, dass $A$ wahr ist $\{B|A\}$, wird als \textbf {reelle Zahl} dargestellt. Für hohe Plausibilitäten werden hohe Zahlenwerte gewählt. Dies ermöglicht den \textbf {universellen} Vergleich voneinander unabhängiger Plausibilitäten.
+ \item Der \emph{Grad der Plausibilität} eines Ereignisses $B$ unter der Bedingung, dass $A$ wahr ist $\{B|A\}$, wird als reelle Zahl dargestellt. Für hohe Plausibilitäten werden hohe Zahlenwerte gewählt. Dies ermöglicht den universellen Vergleich voneinander unabhängiger Plausibilitäten.
  
- \item Sinnvolle Ergebnisse werden unter qualitativem Miteinbezug des \textbf {Verstandes} und durch logische Schlussfolgerungen erzielt.
- \item Es müssen \textbf {alle }verfügbaren Informationen miteinbezogen werden. An die Schlussfolgerungen wird die Anforderung der \textbf {Konsistenz }gestellt, sodass alle Sätze, die gleiches Wissen vermitteln, auf gleiche Plausibilitäten hinführen müssen.
+ \item Sinnvolle Ergebnisse werden unter qualitativem Miteinbezug des Verstandes und durch logische Schlussfolgerungen erzielt.
+ \item Es müssen alle verfügbaren Informationen miteinbezogen werden. An die Schlussfolgerungen wird die Anforderung der Konsistenz gestellt, sodass alle Sätze, die gleiches Wissen vermitteln, auf gleiche Plausibilitäten hinführen müssen.
 \end{enumerate}
 
 
@@ -29,9 +29,9 @@ multipliziert mit der Plausibilität des Eintretens von $C$ unter der Bedingung,
 
 
 \noindent Die Produktregel kann auf bedingte Wahrscheinlichkeiten übertragen werden:
-\begin {displaymath}
+\begin {equation}
 P(B \wedge C|A) = P(B|A)\cdot P(C|AB).
-\end{displaymath}
+\end{equation}
 Dabei versteht man unter $P(B \wedge C|A)$ die Wahrscheinlichkeit für $B$ und $C$ unter der Bedingung $A$.
 Aus der Produktregel folgt, dass 1 für die Wahrheit eines Ereignisses und 0 für die Unmöglichkeit eines Ereignisses steht. Dies dient als Grundlage für die Summenregel:
 \begin{equation}
