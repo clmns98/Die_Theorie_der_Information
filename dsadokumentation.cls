@@ -3,7 +3,7 @@
 % Author and Maintainer: Philipp Arras (c@philipp-arras.de)
 % Contributors: Chuyang Wang (mail@chuyang-wang.de)
 
-\def\dsafileversion{1.6}
+\def\dsafileversion{1.7}
 \def\dsafiledate{2022/07/17}
 
 \NeedsTeXFormat{LaTeX2e}
@@ -43,7 +43,6 @@ giveninits=true,
 sorting=nyvt,
 alldates=year,
 uniquename=false,
-doi=false,
 eprint=false,isbn=false,url=false,dashed=False]{biblatex}
 \DeclarePrintbibliographyDefaults{heading=subbibliography}
 \DeclareNameAlias{sortname}{family-given}
