@@ -1,15 +1,13 @@
 % DO NOT CHANGE THIS FILE
 
-% Maintainer: Philipp Arras (c@philipp-arras.de)
-% Contributors: Philipp Arras (c@philipp-arras.de), Chuyang Wang (mail@chuyang-wang.de)
+% Author and Maintainer: Philipp Arras (c@philipp-arras.de)
+% Contributors: Chuyang Wang (mail@chuyang-wang.de)
 
-\def\dsafileversion{1.5}
-\def\dsafiledate{2022/07/12}
+\def\dsafileversion{1.6}
+\def\dsafiledate{2022/07/17}
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{dsadokumentation}[\dsafiledate\space Version \dsafileversion\space by Philipp Arras]
-
-\AtEndDocument{\newpage Diese Datei wurde mit DSA-Dokumentations-Vorlage Version \dsafileversion{} vom \dsafiledate{} erstellt.}
 
 % Layout and fonts
 \LoadClass[a4paper, twoside]{scrreprt}
@@ -33,7 +31,11 @@
 }
 % /Layout and fonts
 
-\RequirePackage[pdftex]{hyperref}
+\RequirePackage[pdftex,
+                pdfauthor={Deutsche Schuelerakademie},
+                pdftitle={Akademie-Dokumentation},
+                pdfcreator={DSA-Doku-Vorlage Version \dsafileversion{} vom \dsafiledate{}},
+                pdflang={de-DE}]{hyperref}
 
 % Bibliography
 \RequirePackage[style=authoryear,citestyle=authoryear-comp,
@@ -93,7 +95,7 @@ eprint=false,isbn=false,url=false,dashed=False]{biblatex}
   \setkeys{Gin}{draft=false}
   \linenumbers
   \setstretch{2}
-  \chead{\textit{Draft version \today \ \currenttime.}}
+  \chead{\textit{Entwurfsversion \today{} \ \currenttime{} (DSA-Doku-Vorlage Version \dsafileversion{})}}
   \cfoot*{\thepage{}/\pageref{LastPage}}
 }{}
 \makeatother
