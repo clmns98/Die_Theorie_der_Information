@@ -3,8 +3,8 @@
 % Author and Maintainer: Philipp Arras (c@philipp-arras.de)
 % Contributors: Chuyang Wang (mail@chuyang-wang.de)
 
-\def\dsafileversion{1.7}
-\def\dsafiledate{2022/07/17}
+\def\dsafileversion{1.10}
+\def\dsafiledate{2022/07/26}
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{dsadokumentation}[\dsafiledate\space Version \dsafileversion\space by Philipp Arras]
@@ -18,16 +18,16 @@
 \renewcommand*\raggedchapter{\centering}
 \RedeclareSectionCommand[beforeskip=0pt,afterskip=0.5\baselineskip]{chapter}
 \setkomafont{chapterprefix}{\normalsize\mdseries}
-\renewcommand{\chapapp}{Kurs}
+\renewcommand{\chapapp}{KURS}
 \renewcommand*{\chapterformat}{%
-  Akademie \myacademy{} --- \chapappifchapterprefix{\nobreakspace}\thechapter\autodot%
+  \MakeUppercase{Akademie \myacademy{}} --- \chapappifchapterprefix{\nobreakspace}\thechapter\autodot%
   \IfUsePrefixLine{%
     \par\nobreak\vspace{-\parskip}\vspace{-.6\baselineskip}%
     \rule{0.9\textwidth}{.5pt}%
   }{\enskip}%
 }
 \renewcommand\chapterlineswithprefixformat[3]{%
-  \MakeUppercase{#2#3}
+  #2 \MakeUppercase{#3}
 }
 % /Layout and fonts
 
@@ -38,19 +38,9 @@
                 pdflang={de-DE}]{hyperref}
 
 % Bibliography
-\RequirePackage[style=authoryear,citestyle=authoryear-comp,
-giveninits=true,
-sorting=nyvt,
-alldates=year,
-uniquename=false,
-eprint=false,isbn=false,url=false,dashed=False]{biblatex}
+\RequirePackage[style=apa]{biblatex}
 \DeclarePrintbibliographyDefaults{heading=subbibliography}
-\DeclareNameAlias{sortname}{family-given}
-\renewbibmacro{in:}{}
 % /Bibliography
-
-% Better hyphenation
-\RequirePackage[ngerman=ngerman-x-latest]{hyphsubst}
 
 % Math packages
 \RequirePackage{amsmath}
@@ -67,6 +57,29 @@ eprint=false,isbn=false,url=false,dashed=False]{biblatex}
 
 % Include external graphics
 \RequirePackage{graphicx}
+
+% Code listings with solarized colors
+\usepackage[x11names, rgb, html]{xcolor}
+\usepackage{listings}
+\definecolor{sbase0}{HTML}{839496}
+\definecolor{sbase1}{HTML}{93A1A1}
+\definecolor{sbase2}{HTML}{EEE8D5}
+\definecolor{sbase3}{HTML}{FDF6E3}
+\definecolor{scyan}{HTML}{2AA198}
+\definecolor{sblue}{HTML}{268BD2}
+\lstset{
+    frame=lines,
+    backgroundcolor=\color{sbase3},
+    basicstyle=\ttfamily,
+    keywordstyle=\color{scyan}\textbf,
+    commentstyle=\color{sbase0},
+    stringstyle=\color{sblue},
+    numberstyle=\tiny\color{sbase0},
+    numbers=left,
+    showstringspaces=false,
+    tabsize=2
+}
+% /Code listings
 
 % Custom commands
 \newcommand\kurs[3]{\chapter{#1} \begin{center}\Large\MakeUppercase{#2}\normalsize
