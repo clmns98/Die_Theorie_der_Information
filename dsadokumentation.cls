@@ -3,7 +3,7 @@
 % Author and Maintainer: Philipp Arras (c@philipp-arras.de)
 % Contributors: Chuyang Wang (mail@chuyang-wang.de)
 
-\def\dsafileversion{1.10}
+\def\dsafileversion{1.11}
 \def\dsafiledate{2022/07/26}
 
 \NeedsTeXFormat{LaTeX2e}
@@ -74,8 +74,6 @@
     keywordstyle=\color{scyan}\textbf,
     commentstyle=\color{sbase0},
     stringstyle=\color{sblue},
-    numberstyle=\tiny\color{sbase0},
-    numbers=left,
     showstringspaces=false,
     tabsize=2
 }
