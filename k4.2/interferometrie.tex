@@ -85,26 +85,26 @@ Die \emph{Closure-Amplitude}-Matrix von $n$ Antennen hat $\frac{1}{2}n(n-3)$ lin
 }
 \end{equation}
 Um die \emph{Closure Phase} Matrizen zu generieren, verwenden wir folgende Funktion. 
-\begin{verbatim}
+\begin{lstlisting}[language=python]
 def genPhaseMatrix(n):
-    O=math.comb(n,2)
-    mat=np.empty(O,dtype=int)
-    pos=[(x,y) for x in range(n) for y in range(x+1,n)]
-    maxRank=math.comb(n-1,2)
-    for i in range(0,n):
-        for j in range(i+1,n):
-            for k in range(j+1,n):
-                row=np.zeros(O,dtype=int)
-                row[pos.index((i,j)),]=1
-                row[pos.index((i,k))]=-1
-                row[pos.index((j,k))]=1
-                newMat=np.vstack([mat,row])
-                rnk= np.linalg.matrix_rank(newMat)
-                if rnk>np.linalg.matrix_rank(mat):
-                    mat=newMat
-                    if rnk==maxRank:
-                        return mat[1:,:]
-\end{verbatim}
+    O = math.comb(n, 2)
+    mat = np.empty(O, dtype=int)
+    pos = [(x, y) for x in range(n) for y in range(x+1, n)]
+    maxRank = math.comb(n-1, 2)
+    for i in range(0, n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                row = np.zeros(O, dtype=int)
+                row[pos.index((i, j))] = 1
+                row[pos.index((i, k))] = -1
+                row[pos.index((j, k))] = 1
+                newMat = np.vstack([mat, row])
+                rnk = np.linalg.matrix_rank(newMat)
+                if rnk > np.linalg.matrix_rank(mat):
+                    mat = newMat
+                    if rnk == maxRank:
+                        return mat[1:, :]
+\end{lstlisting}
 Die Funktion nimmt als Parameter die Anzahl an Antennen. Zunächst erstellt sie ein leeres Numpy-Array mit einer Zeile für jedes mögliches Antennenpaar. In dem Array wird die Matrix zeilenweise erzeugt. Dann werden alle mögliche Kombinationen von drei Antennen durchlaufen. Ist die Kombination linear unabhängig zu der bereits bestehende Matrix, wird sie der Matrix zugefügt. Dies wird so oft wiederholt, bis entweder alle Möglichkeiten durchgegangen oder die maximale Zeilenanzahl der Matrix erreicht wird. \emph{Amplitude-Phase}-Matrizen werden analog generiert.
 
 Nachdem die \emph{Closure Quantities} erstellt wurden, werden die Daten der Antennen für jedes Zeitintervall in Phase und Amplitude getrennt und mit den \emph{Closure Quantities} Matrizen multipliziert. Da nicht zu jedem Zeitpunkt gleich viele Antennen aktiv sind, (z.B. weil sie im Schatten der Erde liegen) brauchen wir alle \emph{Closure}-Matrizen bis $n=7$ gilt.
@@ -112,15 +112,12 @@ Nachdem die \emph{Closure Quantities} erstellt wurden, werden die Daten der Ante
 Um schließlich ein Bild zu erzeugen, benötigen wir den Posterior aus dem Theorem von Bayes. Um diesen zu berechnen, setzen wir ein: 
 
 
-\begin{equation}
-P(\xi|d)= \frac {P(d|\xi)\cdot P(\xi)}{ P(d) }
-\end{equation}
+\begin{align}
+	P(\xi|d) &= \frac {P(d|\xi)\cdot P(\xi)}{ P(d) }\\
+	P(d|\xi) &=  {P(d_{ph}|\xi)\cdot P(d_{amp}|\xi)}\label{k4.2.likelihood}
+\end{align}
 
-\begin{equation}
-P(d|\xi)=  {P(d_{ph}|\xi)\cdot P(d_{amp}|\xi)}    
-\end{equation}
-
-Die Likelihood (\cref{k4.2.likelihood}) besteht aus zwei Teilen: $P(d_{ph}|\xi)$, der Wahrscheinlichkeit der \emph{Closure Phases} gegeben die Parameter $\xi$ und $P(d_{am}| \xi)$, der Wahrscheinlichkeit der \emph{Closure Amplitudes} gegeben $\xi$ : 
+Die Likelihood (\cref{k4.2.likelihood}) besteht aus zwei Teilen: $P(d_{ph}|\xi)$, der Wahrscheinlichkeit der \emph{Closure Phases} gegeben die Parameter $\xi$ und $P(d_{am}| \xi)$, der Wahrscheinlichkeit der \emph{Closure Amplitudes} gegeben $\xi$.
 
 Der negative Logarithmus des Posteriors
 \begin{align} \label{k4.2.Posterior}
@@ -139,4 +136,3 @@ Dadurch erhält man folgendes Bild:
     \caption{Bild des Schwarzen Lochs M87*}
     \label{k4.2.black-hole-lin}
 \end{figure}
-
